@@ -105,6 +105,7 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
+		page.Initialization.PageTitle = "Cup Run " + strconv.Itoa(runNum)
 		page.Render(io.MultiWriter(f))
 		runNum++
 
@@ -137,6 +138,7 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
+		page.Initialization.PageTitle = "Faceplate Run " + strconv.Itoa(runNum)
 		page.Render(io.MultiWriter(f))
 		runNum++
 
@@ -173,6 +175,7 @@ func rawChart() *charts.Line {
 		}),
 		charts.WithXAxisOpts(opts.XAxis{Name: "Time(ms)"}),
 		charts.WithYAxisOpts(opts.YAxis{Name: "Current(pA)"}),
+		charts.WithInitializationOpts(opts.Initialization{PageTitle: "Testing"}),
 	)
 
 	//creating X-axis from rawXData with 2 series (deflected and undeflected)
